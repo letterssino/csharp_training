@@ -12,7 +12,7 @@ using OpenQA.Selenium.Support.UI;
 namespace adressbook_web_test_Unit
 {
     [TestFixture]
-    public class UntitledTestCase
+    public class GroupCreationTests
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;
@@ -43,7 +43,7 @@ namespace adressbook_web_test_Unit
         }
 
         [Test]
-        public void TheUntitledTestCaseTest()
+        public void GroupCreationTest()
         {
             driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.Name("user")).Click();
@@ -57,11 +57,11 @@ namespace adressbook_web_test_Unit
             driver.FindElement(By.Name("new")).Click();
             driver.FindElement(By.Name("group_name")).Click();
             driver.FindElement(By.Name("group_name")).Clear();
-            driver.FindElement(By.Name("group_name")).SendKeys("q");
+            driver.FindElement(By.Name("group_name")).SendKeys("Dz2.1");
             driver.FindElement(By.Name("group_header")).Clear();
-            driver.FindElement(By.Name("group_header")).SendKeys("q");
+            driver.FindElement(By.Name("group_header")).SendKeys("Dz2.1");
             driver.FindElement(By.Name("group_footer")).Clear();
-            driver.FindElement(By.Name("group_footer")).SendKeys("q");
+            driver.FindElement(By.Name("group_footer")).SendKeys("Dz2.1");
             driver.FindElement(By.Name("submit")).Click();
             driver.FindElement(By.LinkText("group page")).Click();
             driver.FindElement(By.LinkText("Logout")).Click();
