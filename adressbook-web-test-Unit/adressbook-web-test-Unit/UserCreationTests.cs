@@ -25,7 +25,7 @@ namespace adressbook_web_test_Unit
             driver = new ChromeDriver();
             baseURL = "http://localhost/addressbook/";
             verificationErrors = new StringBuilder();
-            
+
         }
 
         [TearDown]
@@ -48,7 +48,12 @@ namespace adressbook_web_test_Unit
             OpenHomePage();
             Login("admin", "secret");
             InitUserCreation();
-            FillUserForm();
+            UserData group = new UserData("firstname");
+            group.Middlename = "middlename";
+            group.Lastname = "Lastname";
+            group.Bmonth = "November";
+            group.New_group = "[none]";
+            FillUserForm(group);
             SubmitUserCreation();
             Logout();
         }
@@ -83,135 +88,46 @@ namespace adressbook_web_test_Unit
             driver.FindElement(By.LinkText("add new")).Click();
         }
 
-        private void FillUserForm()
+        private void FillUserForm(UserData group)
         {
             driver.FindElement(By.Name("firstname")).Click();
             driver.FindElement(By.Name("firstname")).Clear();
-            driver.FindElement(By.Name("firstname")).SendKeys(TextDB("firstname"));
+            driver.FindElement(By.Name("firstname")).SendKeys(group.Firstname);
             driver.FindElement(By.Name("middlename")).Clear();
-            driver.FindElement(By.Name("middlename")).SendKeys(TextDB("middlename"));
+            driver.FindElement(By.Name("middlename")).SendKeys(group.Middlename);
             driver.FindElement(By.Name("lastname")).Clear();
-            driver.FindElement(By.Name("lastname")).SendKeys(TextDB("lastname"));
+            driver.FindElement(By.Name("lastname")).SendKeys(group.Lastname);
             driver.FindElement(By.Name("nickname")).Clear();
-            driver.FindElement(By.Name("nickname")).SendKeys(TextDB("nickname"));
+            driver.FindElement(By.Name("nickname")).SendKeys(group.Nickname);
             driver.FindElement(By.Name("title")).Clear();
-            driver.FindElement(By.Name("title")).SendKeys(TextDB("firstname"));
+            driver.FindElement(By.Name("title")).SendKeys(group.Title);
             driver.FindElement(By.Name("company")).Clear();
-            driver.FindElement(By.Name("company")).SendKeys(TextDB("company"));
+            driver.FindElement(By.Name("company")).SendKeys(group.Company);
             driver.FindElement(By.Name("address")).Clear();
-            driver.FindElement(By.Name("address")).SendKeys(TextDB("address"));
+            driver.FindElement(By.Name("address")).SendKeys(group.Address);
             driver.FindElement(By.Name("home")).Clear();
-            driver.FindElement(By.Name("home")).SendKeys(TextDB("home"));
+            driver.FindElement(By.Name("home")).SendKeys(group.Home);
             driver.FindElement(By.Name("mobile")).Clear();
-            driver.FindElement(By.Name("mobile")).SendKeys(TextDB("mobile"));
+            driver.FindElement(By.Name("mobile")).SendKeys(group.Mobile);
             driver.FindElement(By.Name("work")).Clear();
-            driver.FindElement(By.Name("work")).SendKeys(TextDB("work"));
+            driver.FindElement(By.Name("work")).SendKeys(group.Work);
             driver.FindElement(By.Name("fax")).Clear();
-            driver.FindElement(By.Name("fax")).SendKeys(TextDB("fax"));
+            driver.FindElement(By.Name("fax")).SendKeys(group.Fax);
             driver.FindElement(By.Name("email")).Clear();
-            driver.FindElement(By.Name("email")).SendKeys(TextDB("email"));
+            driver.FindElement(By.Name("email")).SendKeys(group.Email);
             driver.FindElement(By.Name("homepage")).Clear();
-            driver.FindElement(By.Name("homepage")).SendKeys(TextDB("homepage"));
+            driver.FindElement(By.Name("homepage")).SendKeys(group.Homepage);
             driver.FindElement(By.Name("bday")).Click();
-            new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(TextDB("bday"));
+            new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(group.Bday);
             driver.FindElement(By.Name("bmonth")).Click();
-            new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText(TextDB("bmonth"));
+            new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText(group.Bmonth);
             driver.FindElement(By.Name("byear")).Click();
             driver.FindElement(By.Name("byear")).Clear();
-            driver.FindElement(By.Name("byear")).SendKeys(TextDB("byear"));
+            driver.FindElement(By.Name("byear")).SendKeys(group.Byear);
             driver.FindElement(By.Name("new_group")).Click();
-            new SelectElement(driver.FindElement(By.Name("new_group"))).SelectByText("Dz2.1");
+            new SelectElement(driver.FindElement(By.Name("new_group"))).SelectByText(group.New_group);
         }
-
-        private string TextDB(string parm)
-        {
-            switch (parm)
-            {
-                case "firstname":
-                    {
-                        parm = "Аникин";
-                        break;
-                    }
-                case "middlename":
-                    {
-                        parm = "Павел";
-                        break;
-                    }
-                case "lastname":
-                    {
-                        parm = "Павлович";
-                        break;
-                    }
-                case "nickname":
-                    {
-                        parm = "letterssino";
-                        break;
-                    }
-                case "title":
-                    {
-                        parm = "Аникин П.П.";
-                        break;
-                    }
-                case "company":
-                    {
-                        parm = "AS";
-                        break;
-                    }
-                case "address":
-                    {
-                        parm = "Kolomna";
-                        break;
-                    }
-                case "home":
-                    {
-                        parm = "";
-                        break;
-                    }
-                case "mobile":
-                    {
-                        parm = "";
-                        break;
-                    }
-                case "work":
-                    {
-                        parm = "";
-                        break;
-                    }
-                case "fax":
-                    {
-                        parm = "";
-                        break;
-                    }
-                case "email":
-                    {
-                        parm = "anikin.paul@yandex.ru";
-                        break;
-                    }
-                case "homepage":
-                    {
-                        parm = "";
-                        break;
-                    }
-                case "bday":
-                    {
-                        parm = "12";
-                        break;
-                    }
-                case "bmonth":
-                    {
-                        parm = "November";
-                        break;
-                    }
-                case "byear":
-                    {
-                        parm = "1997";
-                        break;
-                    }
-            }
-
-            return parm;
-        }
-
+          
         private void SubmitUserCreation()
         {
             driver.FindElement(By.XPath("//div[@id='content']/form/input[20]")).Click();
