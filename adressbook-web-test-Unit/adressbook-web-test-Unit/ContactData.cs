@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace adressbook_web_test_Unit
 {
-    public class UserData
+    public class ContactData
     {
         private string firstname;
         private string middlename = "";
@@ -26,7 +26,7 @@ namespace adressbook_web_test_Unit
         private string byear = "";
         private string new_group = "";
 
-        public UserData(string firstname)
+        public ContactData(string firstname)
         {
             this.firstname = firstname;
         }

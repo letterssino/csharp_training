@@ -6,13 +6,12 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 
 namespace adressbook_web_test_Unit
 {
     [TestFixture]
-    public class GroupCreationTests : TestBase
+    public class GroupRemovalTests : TestBase
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;
@@ -22,7 +21,6 @@ namespace adressbook_web_test_Unit
         [SetUp]
         public void SetupTest()
         {
-            //driver = new FirefoxDriver();
             driver = new ChromeDriver();
             baseURL = "http://localhost/addressbook/";
             verificationErrors = new StringBuilder();
@@ -43,51 +41,29 @@ namespace adressbook_web_test_Unit
         }
 
         [Test]
-        public void GroupCreationTest()
+        public void GroupRemovalTest()
         {
-            Openhomepage();
+            GoToHomePage();
             Login(new AccountData("admin","secret"));
             GoToGroupPage();
-            InitGroupCreation();
-            GroupData group = new GroupData("aaa");
-            group.Header = "ddd";
-            group.Footer = "sss";
-            FillGroupForm(group);
-            
-            SubmitGroupCreation();
-            ReturnToGroupPage();
-            Logout();
+            SelectGroup(1);
+            RemoveGroup();
+            ReturnToGroupsPage();
         }
 
-        private void Logout()
-        {            
-            driver.FindElement(By.LinkText("Logout")).Click();
-        }
-
-        private void ReturnToGroupPage()
+        private void ReturnToGroupsPage()
         {
             driver.FindElement(By.LinkText("group page")).Click();
         }
 
-        private void SubmitGroupCreation()
+        private void RemoveGroup()
         {
-            driver.FindElement(By.Name("submit")).Click();
+            driver.FindElement(By.Name("delete")).Click();
         }
 
-        private void FillGroupForm(GroupData group)
+        private void SelectGroup(int index)
         {
-            driver.FindElement(By.Name("group_name")).Click();
-            driver.FindElement(By.Name("group_name")).Clear();
-            driver.FindElement(By.Name("group_name")).SendKeys(group.Name);
-            driver.FindElement(By.Name("group_header")).Clear();
-            driver.FindElement(By.Name("group_header")).SendKeys(group.Header);
-            driver.FindElement(By.Name("group_footer")).Clear();
-            driver.FindElement(By.Name("group_footer")).SendKeys(group.Footer);
-        }
-
-        private void InitGroupCreation()
-        {
-            driver.FindElement(By.Name("new")).Click();
+            driver.FindElement(By.XPath("//div[@id='content']/form/span[" + index + "]/input")).Click();
         }
 
         private void GoToGroupPage()
@@ -95,7 +71,7 @@ namespace adressbook_web_test_Unit
             driver.FindElement(By.LinkText("groups")).Click();
         }
 
-        public void Login(AccountData account)
+        private void Login(AccountData account)
         {
             driver.FindElement(By.Name("user")).Click();
             driver.FindElement(By.Name("user")).Clear();
@@ -103,10 +79,9 @@ namespace adressbook_web_test_Unit
             driver.FindElement(By.Name("pass")).Clear();
             driver.FindElement(By.Name("pass")).SendKeys(account.Passwod);
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
-            driver.FindElement(By.Id("header")).Click();
         }
 
-        private void Openhomepage()
+        private void GoToHomePage()
         {
             driver.Navigate().GoToUrl(baseURL);
         }
