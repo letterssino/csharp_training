@@ -13,13 +13,13 @@ namespace adressbook_web_test_Unit
             app.NavigationHelper.Openhomepage();
             app.Auth.Login(new AccountData("admin","secret"));
             app.NavigationHelper.GoToGroupPage();
-            app.Groups.InitGroupCreation();
+            app.GroupHelper.InitGroupCreation();
             GroupData group = new GroupData("aaa");
             group.Header = "ddd";
             group.Footer = "sss";
-            app.Groups.FillGroupForm(group);
+            app.GroupHelper.FillGroupForm(group);
 
-            app.Groups.SubmitGroupCreation();
+            app.GroupHelper.SubmitGroupCreation();
             app.NavigationHelper.ReturnToGroupPage();
             app.Auth.Logout();
         }

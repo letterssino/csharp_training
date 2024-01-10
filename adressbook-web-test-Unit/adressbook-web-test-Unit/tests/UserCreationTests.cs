@@ -12,14 +12,14 @@ namespace adressbook_web_test_Unit
         {
             app.NavigationHelper.Openhomepage();
             app.Auth.Login(new AccountData("admin", "secret"));
-            app.Users.InitUserCreation();
+            app.UserHelper.InitUserCreation();
             ContactData contact = new ContactData("firstname");
             contact.Middlename = "middlename";
             contact.Lastname = "Lastname";
             contact.Bmonth = "November";
             contact.New_group = "[none]";
-            app.Users.FillUserForm(contact);
-            app.Users.SubmitUserCreation();
+            app.UserHelper.FillUserForm(contact);
+            app.UserHelper.SubmitUserCreation();
             app.Auth.Logout();
         }
     }

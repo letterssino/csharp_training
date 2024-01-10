@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace adressbook_web_test_Unit
 {
-    public class UserHelper : HelperBase
+    public class ContactHelper : HelperBase
     {
         
 
-        public UserHelper(IWebDriver driver) : base(driver)
+        public ContactHelper(IWebDriver driver) : base(driver)
         {
             this.driver = driver;
         }

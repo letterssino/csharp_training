@@ -5,7 +5,7 @@ namespace adressbook_web_test_Unit
     public class HelperBase
     {
         protected IWebDriver driver;
-        /*private bool acceptNextAlert;*/
+        private bool acceptNextAlert;
 
         public HelperBase(IWebDriver driver) {
             this.driver = driver;
@@ -22,7 +22,7 @@ namespace adressbook_web_test_Unit
                 return false;
             }
         }
-/*        public bool IsAlertPresent()
+        public bool IsAlertPresent()
         {
             try
             {
@@ -55,6 +55,6 @@ namespace adressbook_web_test_Unit
             {
                 acceptNextAlert = true;
             }
-        }*/
+        }
     }
 }

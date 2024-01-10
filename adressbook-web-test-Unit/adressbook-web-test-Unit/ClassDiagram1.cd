@@ -52,11 +52,11 @@
       <FileName>appmanger\NavigationHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="adressbook_web_test_Unit.UserHelper" Collapsed="true">
+  <Class Name="adressbook_web_test_Unit.ContactHelper" Collapsed="true">
     <Position X="8.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAACAAAAAIAAA=</HashCode>
-      <FileName>appmanger\UserHelper.cs</FileName>
+      <FileName>appmanger\ContactHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="adressbook_web_test_Unit.HelperBase" Collapsed="true">
@@ -69,7 +69,7 @@
   <Class Name="adressbook_web_test_Unit.ApplicationManager" Collapsed="true">
     <Position X="5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAGAAAAAAAAAAAAAAAASAAAAAAAAAIBAAQBEAACA=</HashCode>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAASAACAAAAAAIBAAQBEQAGA=</HashCode>
       <FileName>appmanger\ApplicationManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

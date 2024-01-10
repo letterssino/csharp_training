@@ -11,8 +11,8 @@ namespace adressbook_web_test_Unit
             app.NavigationHelper.Openhomepage();
             app.Auth.Login(new AccountData("admin","secret"));
             app.NavigationHelper.GoToGroupPage();
-            app.Groups.SelectGroup(1);
-            app.Groups.RemoveGroup();
+            app.GroupHelper.SelectGroup(1);
+            app.GroupHelper.RemoveGroup();
             app.NavigationHelper.ReturnToGroupsPage();
             app.Auth.Logout();
         }

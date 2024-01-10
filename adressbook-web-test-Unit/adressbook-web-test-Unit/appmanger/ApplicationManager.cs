@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using System;
 
 namespace adressbook_web_test_Unit
@@ -8,16 +9,18 @@ namespace adressbook_web_test_Unit
         protected LoginHelper loginHelper;
         protected NavigationHelper navigationHelper;
         protected GroupHelper groupHelper;
-        protected UserHelper userHelper;
+        protected ContactHelper userHelper;
         protected string baseURL;
         protected IWebDriver driver;
 
         public ApplicationManager()
         {
+            baseURL = "http://localhost/addressbook/";
+            driver = new ChromeDriver();
             loginHelper = new LoginHelper(driver);
             navigationHelper = new NavigationHelper(driver, baseURL);
             groupHelper = new GroupHelper(driver);
-            userHelper = new UserHelper(driver);
+            userHelper = new ContactHelper(driver);
         }
 
         public void Stop()
@@ -41,14 +44,14 @@ namespace adressbook_web_test_Unit
             get { return navigationHelper; }
         }
 
-        public GroupHelper Groups
+        public GroupHelper GroupHelper
         {
-            get { return Groups; }
+            get { return groupHelper; }
         }
         
-        public UserHelper Users
+        public ContactHelper UserHelper
         {
-            get { return Users; } 
+            get { return userHelper; } 
         }
 
         public string BaseURL
