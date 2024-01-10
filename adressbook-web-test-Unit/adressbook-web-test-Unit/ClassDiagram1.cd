@@ -1,2 +1,83 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="adressbook_web_test_Unit.TestBase">
+    <Position X="2.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAABAAAAAAABAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>appmanger\TestBase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="app" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="adressbook_web_test_Unit.GroupCreationTests">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>tests\GroupCreationTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="adressbook_web_test_Unit.GroupRemovalTests">
+    <Position X="2.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>tests\GroupRemovalTest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="adressbook_web_test_Unit.UserCreationTests">
+    <Position X="4" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>tests\UserCreationTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="adressbook_web_test_Unit.GroupHelper" Collapsed="true">
+    <Position X="8.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAABAAAAAAAAAAAAAAAABEAAAAAAAAABAAAA=</HashCode>
+      <FileName>appmanger\GroupHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="adressbook_web_test_Unit.LoginHelper" Collapsed="true">
+    <Position X="8.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>appmanger\LoginHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="adressbook_web_test_Unit.NavigationHelper" Collapsed="true">
+    <Position X="8.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CBAAAAAAAAAABAAAAAAAAAAAAAAAIAAAAAAAAAAAACA=</HashCode>
+      <FileName>appmanger\NavigationHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="adressbook_web_test_Unit.UserHelper" Collapsed="true">
+    <Position X="8.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAACAAAAAIAAA=</HashCode>
+      <FileName>appmanger\UserHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="adressbook_web_test_Unit.HelperBase" Collapsed="true">
+    <Position X="11.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAABAAABCAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>appmanger\HelperBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="adressbook_web_test_Unit.ApplicationManager" Collapsed="true">
+    <Position X="5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAGAAAAAAAAAAAAAAAASAAAAAAAAAIBAAQBEAACA=</HashCode>
+      <FileName>appmanger\ApplicationManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="loginHelper" />
+      <Field Name="navigationHelper" />
+      <Field Name="groupHelper" />
+      <Field Name="userHelper" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
