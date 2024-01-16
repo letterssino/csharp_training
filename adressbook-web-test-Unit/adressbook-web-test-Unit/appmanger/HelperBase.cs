@@ -6,9 +6,11 @@ namespace adressbook_web_test_Unit
     {
         protected IWebDriver driver;
         private bool acceptNextAlert;
+        protected ApplicationManager manager;
 
-        public HelperBase(IWebDriver driver) {
-            this.driver = driver;
+        public HelperBase(ApplicationManager manager) {
+            this.manager = manager;
+            driver = manager.Driver;
         }
         public bool IsElementPresent(By by)
         {

@@ -13,6 +13,8 @@ namespace adressbook_web_test_Unit
         public void SetupTest()
         {
             app = new ApplicationManager();
+            app.NavigationHelper.Openhomepage();
+            app.Auth.Login(new AccountData("admin", "secret"));
         }
 
 

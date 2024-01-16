@@ -9,7 +9,7 @@ namespace adressbook_web_test_Unit
         protected LoginHelper loginHelper;
         protected NavigationHelper navigationHelper;
         protected GroupHelper groupHelper;
-        protected ContactHelper userHelper;
+        protected ContactHelper contactHelper;
         protected string baseURL;
         protected IWebDriver driver;
 
@@ -17,12 +17,16 @@ namespace adressbook_web_test_Unit
         {
             baseURL = "http://localhost/addressbook/";
             driver = new ChromeDriver();
-            loginHelper = new LoginHelper(driver);
-            navigationHelper = new NavigationHelper(driver, baseURL);
-            groupHelper = new GroupHelper(driver);
-            userHelper = new ContactHelper(driver);
+            loginHelper = new LoginHelper(this);
+            navigationHelper = new NavigationHelper(this, baseURL);
+            groupHelper = new GroupHelper(this);
+            contactHelper = new ContactHelper(this);
         }
 
+        public IWebDriver Driver 
+        {
+            get { return driver; }
+        }
         public void Stop()
         {
             try
@@ -49,12 +53,13 @@ namespace adressbook_web_test_Unit
             get { return groupHelper; }
         }
         
-        public ContactHelper UserHelper
+        public ContactHelper ContactHelper
         {
-            get { return userHelper; } 
+            get { return contactHelper; } 
         }
 
         public string BaseURL
-        { get { return baseURL; } } 
+        { get { return baseURL; } }
+
     }
 }

@@ -13,9 +13,8 @@ namespace adressbook_web_test_Unit
     {
        
 
-        public LoginHelper(IWebDriver driver) : base(driver)
+        public LoginHelper(ApplicationManager manager) : base(manager)
         {
-        this.driver = driver;
         }
         public void Login(AccountData account)
         {

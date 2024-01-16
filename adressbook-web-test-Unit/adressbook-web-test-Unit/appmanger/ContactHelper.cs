@@ -10,18 +10,23 @@ namespace adressbook_web_test_Unit
 {
     public class ContactHelper : HelperBase
     {
-        
 
-        public ContactHelper(IWebDriver driver) : base(driver)
+
+        public ContactHelper(ApplicationManager manager) : base(manager)
         {
-            this.driver = driver;
-        }
-        public void InitUserCreation()
-        {
-            driver.FindElement(By.LinkText("add new")).Click();
+
         }
 
-        public void FillUserForm(ContactData contact)
+        public ContactHelper ContacCreat(ContactData contact)
+        {
+            manager.NavigationHelper.InitUserCreation();
+            FillUserForm(contact);
+            SubmitUserCreation();
+            return this;
+        }
+
+
+        public ContactHelper FillUserForm(ContactData contact)
         {
             driver.FindElement(By.Name("firstname")).Click();
             driver.FindElement(By.Name("firstname")).Clear();
@@ -59,11 +64,13 @@ namespace adressbook_web_test_Unit
             driver.FindElement(By.Name("byear")).SendKeys(contact.Byear);
             driver.FindElement(By.Name("new_group")).Click();
             new SelectElement(driver.FindElement(By.Name("new_group"))).SelectByText(contact.New_group);
+            return this;
         }
 
-        public void SubmitUserCreation()
+        public ContactHelper SubmitUserCreation()
         {
             driver.FindElement(By.XPath("//div[@id='content']/form/input[20]")).Click();
+            return this;
         }
     }
 }

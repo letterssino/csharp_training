@@ -8,9 +8,8 @@ namespace adressbook_web_test_Unit
         
         private string baseURL;
         
-        public NavigationHelper(IWebDriver driver, string baseURL) : base(driver)
+        public NavigationHelper(ApplicationManager manager, string baseURL) : base(manager)
         {
-            this.driver = driver;
             this.baseURL = baseURL;
         }
         public void ReturnToGroupPage()
@@ -28,9 +27,10 @@ namespace adressbook_web_test_Unit
             driver.Navigate().GoToUrl(baseURL);
         }
 
-        public void ReturnToGroupsPage()
+        public void InitUserCreation()
         {
-            driver.FindElement(By.LinkText("group page")).Click();
+            driver.FindElement(By.LinkText("add new")).Click();
         }
+
     }
 }

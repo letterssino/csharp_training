@@ -11,6 +11,7 @@ namespace adressbook_web_test_Unit
         private string name; 
         private string header = "";
         private string footer = "";
+        private int index = 1;
         public GroupData(string name)
         {
             this.name = name;
@@ -45,13 +46,24 @@ namespace adressbook_web_test_Unit
         }
         public string Footer
         {
-            get 
-            {  
-                return footer;  
+            get
+            {
+                return footer;
             }
-            set 
+            set
+            {
+                footer = value;
+            }
+        }
+        public int Index
+        {
+            get
+            {
+                return index;
+            }
+            set
             { 
-                footer = value; 
+                index = value; 
             }
 
         }

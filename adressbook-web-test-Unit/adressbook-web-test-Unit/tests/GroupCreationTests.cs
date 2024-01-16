@@ -10,18 +10,21 @@ namespace adressbook_web_test_Unit
         [Test]
         public void GroupCreationTest()
         {
-            app.NavigationHelper.Openhomepage();
-            app.Auth.Login(new AccountData("admin","secret"));
-            app.NavigationHelper.GoToGroupPage();
-            app.GroupHelper.InitGroupCreation();
             GroupData group = new GroupData("aaa");
             group.Header = "ddd";
             group.Footer = "sss";
-            app.GroupHelper.FillGroupForm(group);
 
-            app.GroupHelper.SubmitGroupCreation();
-            app.NavigationHelper.ReturnToGroupPage();
-            app.Auth.Logout();
+            app.GroupHelper.CreateGroup(group);
+        }
+
+        [Test]
+        public void EmptyGroupCreationTest()
+        {         
+            GroupData group = new GroupData("");
+            group.Header = "";
+            group.Footer = "";
+
+            app.GroupHelper.CreateGroup(group);
         }
     }
 }
