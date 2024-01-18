@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,7 +27,19 @@ namespace adressbook_web_test_Unit
             return this;
         }
 
+        public GroupHelper Modify(int index, GroupData newData)
+        {
+            manager.NavigationHelper.GoToGroupPage();
+            SelectGroup(index);
+            InitGroupModification();
+            FillGroupForm(newData);
+            SubmitGroupModification();
+            ReturnToGroupsPage();
 
+            return this;
+        }
+
+ 
 
         public GroupHelper RemovalGroup(int index)
         {
@@ -73,6 +86,18 @@ namespace adressbook_web_test_Unit
         public  GroupHelper ReturnToGroupsPage()
         {
             driver.FindElement(By.LinkText("group page")).Click();
+            return this;
+        }
+
+        public GroupHelper SubmitGroupModification()
+        {
+            driver.FindElement(By.Name("update")).Click();
+            return this;
+        }
+
+        public GroupHelper InitGroupModification()
+        {
+            driver.FindElement(By.Name("edit")).Click();
             return this;
         }
     }

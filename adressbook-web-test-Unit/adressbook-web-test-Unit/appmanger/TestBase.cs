@@ -8,7 +8,7 @@ namespace adressbook_web_test_Unit
 
         protected ApplicationManager app;
 
-        private bool acceptNextAlert = true;
+        /*private bool acceptNextAlert = true;*/
         [SetUp]
         public void SetupTest()
         {

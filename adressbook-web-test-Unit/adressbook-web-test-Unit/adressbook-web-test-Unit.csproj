@@ -64,18 +64,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="tests\Contact\ContactModificationTests.cs" />
+    <Compile Include="tests\Contact\ContactDeletedTests.cs" />
+    <Compile Include="tests\Groups\GroupModificationTests.cs" />
     <Compile Include="model\AccountData.cs" />
     <Compile Include="appmanger\ApplicationManager.cs" />
     <Compile Include="model\GroupData.cs" />
     <Compile Include="appmanger\GroupHelper.cs" />
-    <Compile Include="tests\GroupRemovalTest.cs" />
+    <Compile Include="tests\Groups\GroupRemovalTests.cs" />
     <Compile Include="appmanger\HelperBase.cs" />
     <Compile Include="appmanger\LoginHelper.cs" />
     <Compile Include="appmanger\NavigationHelper.cs" />
     <Compile Include="appmanger\TestBase.cs" />
-    <Compile Include="tests\ContactCreationTests.cs" />
+    <Compile Include="tests\Contact\ContactCreationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="tests\GroupCreationTests.cs" />
+    <Compile Include="tests\Groups\GroupCreationTests.cs" />
     <Compile Include="model\ContactData.cs" />
     <Compile Include="appmanger\ContactHelper.cs" />
   </ItemGroup>

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NUnit.Framework.Interfaces;
+using System.Reflection.Emit;
 
 namespace adressbook_web_test_Unit
 {
@@ -17,13 +19,34 @@ namespace adressbook_web_test_Unit
 
         }
 
-        public ContactHelper ContacCreat(ContactData contact)
+        public ContactHelper ContactCreat(ContactData contact)
         {
             manager.NavigationHelper.InitUserCreation();
             FillUserForm(contact);
             SubmitUserCreation();
+            
             return this;
         }
+
+        public ContactHelper ContactDeleted(int id) 
+        {
+            manager.NavigationHelper.Openhomepage();
+            ContactSelected(id);
+            SubmitContactDeleted();
+            driver.SwitchTo().Alert().Accept();
+
+            return this;
+        }
+
+        public ContactHelper ContactModification(int index, ContactData newContactData)
+        {
+            manager.NavigationHelper.Openhomepage();
+            FillContactModificationForm(index);
+            FillUserForm(newContactData);
+            SubmitContactModification();
+            return this;
+        }
+
 
 
         public ContactHelper FillUserForm(ContactData contact)
@@ -62,8 +85,8 @@ namespace adressbook_web_test_Unit
             driver.FindElement(By.Name("byear")).Click();
             driver.FindElement(By.Name("byear")).Clear();
             driver.FindElement(By.Name("byear")).SendKeys(contact.Byear);
-            driver.FindElement(By.Name("new_group")).Click();
-            new SelectElement(driver.FindElement(By.Name("new_group"))).SelectByText(contact.New_group);
+            /*driver.FindElement(By.Name("new_group")).Click();
+            new SelectElement(driver.FindElement(By.Name("new_group"))).SelectByText(contact.New_group);*/
             return this;
         }
 
@@ -72,5 +95,34 @@ namespace adressbook_web_test_Unit
             driver.FindElement(By.XPath("//div[@id='content']/form/input[20]")).Click();
             return this;
         }
+
+        public ContactHelper ContactSelected(int id)
+        {
+            
+            driver.FindElement(By.Id(Convert.ToString(id))).Click();
+            return this;
+        }
+
+        public ContactHelper SubmitContactDeleted()
+        {
+            driver.FindElement(By.XPath("//input[@value='Delete']")).Click();
+            return this;
+        }
+
+        public ContactHelper SubmitContactModification()
+        {
+            driver.FindElement(By.XPath("//input[@name='update']")).Click();
+            return this;
+        }
+
+        public ContactHelper FillContactModificationForm(int index)
+        {
+            driver.FindElement(By.XPath($"//a[@href=\"edit.php?id={index}\"]")).Click();
+            return this;
+        }
+      
     }
 }
+
+
+    

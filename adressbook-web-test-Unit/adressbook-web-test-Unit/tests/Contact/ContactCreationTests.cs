@@ -15,9 +15,8 @@ namespace adressbook_web_test_Unit
             contact.Middlename = "middlename";
             contact.Lastname = "Lastname";
             contact.Bmonth = "November";
-            contact.New_group = "[none]";
 
-            app.ContactHelper.ContacCreat(contact);
+            app.ContactHelper.ContactCreat(contact);
         }
     }
 }
