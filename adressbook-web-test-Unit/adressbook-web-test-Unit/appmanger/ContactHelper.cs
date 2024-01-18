@@ -84,8 +84,6 @@ namespace adressbook_web_test_Unit
             driver.FindElement(By.Name("byear")).Click();
             driver.FindElement(By.Name("byear")).Clear();
             driver.FindElement(By.Name("byear")).SendKeys(contact.Byear);
-            /*driver.FindElement(By.Name("new_group")).Click();
-            new SelectElement(driver.FindElement(By.Name("new_group"))).SelectByText(contact.New_group);*/
             return this;
         }
 

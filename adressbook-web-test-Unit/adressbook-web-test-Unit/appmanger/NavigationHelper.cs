@@ -22,7 +22,7 @@ namespace adressbook_web_test_Unit
             driver.FindElement(By.LinkText("groups")).Click();
         }
 
-        public void Openhomepage() // переход на базовую страницу
+        public void Openhomepage()
         {
             driver.Navigate().GoToUrl(baseURL);
         }
