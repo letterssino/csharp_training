@@ -33,8 +33,7 @@ namespace adressbook_web_test_Unit
             manager.NavigationHelper.Openhomepage();
             ContactSelected(id);
             SubmitContactDeleted();
-            driver.SwitchTo().Alert().Accept();
-
+            
             return this;
         }
 
