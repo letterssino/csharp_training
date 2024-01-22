@@ -64,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="appmanger\TestSuiteFixture.cs" />
     <Compile Include="tests\Contact\ContactModificationTests.cs" />
     <Compile Include="tests\Contact\ContactDeletedTests.cs" />
     <Compile Include="tests\Groups\GroupModificationTests.cs" />

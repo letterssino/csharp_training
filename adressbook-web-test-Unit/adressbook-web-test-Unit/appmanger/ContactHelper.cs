@@ -28,10 +28,10 @@ namespace adressbook_web_test_Unit
             return this;
         }
 
-        public ContactHelper ContactDeleted(int id) 
+        public ContactHelper ContactDeleted(int index) 
         {
             manager.NavigationHelper.Openhomepage();
-            ContactSelected(id);
+            ContactSelected(index);
             SubmitContactDeleted();
             
             return this;
@@ -50,40 +50,23 @@ namespace adressbook_web_test_Unit
 
         public ContactHelper FillUserForm(ContactData contact)
         {
-            driver.FindElement(By.Name("firstname")).Click();
-            driver.FindElement(By.Name("firstname")).Clear();
-            driver.FindElement(By.Name("firstname")).SendKeys(contact.Firstname);
-            driver.FindElement(By.Name("middlename")).Clear();
-            driver.FindElement(By.Name("middlename")).SendKeys(contact.Middlename);
-            driver.FindElement(By.Name("lastname")).Clear();
-            driver.FindElement(By.Name("lastname")).SendKeys(contact.Lastname);
-            driver.FindElement(By.Name("nickname")).Clear();
-            driver.FindElement(By.Name("nickname")).SendKeys(contact.Nickname);
-            driver.FindElement(By.Name("title")).Clear();
-            driver.FindElement(By.Name("title")).SendKeys(contact.Title);
-            driver.FindElement(By.Name("company")).Clear();
-            driver.FindElement(By.Name("company")).SendKeys(contact.Company);
-            driver.FindElement(By.Name("address")).Clear();
-            driver.FindElement(By.Name("address")).SendKeys(contact.Address);
-            driver.FindElement(By.Name("home")).Clear();
-            driver.FindElement(By.Name("home")).SendKeys(contact.Home);
-            driver.FindElement(By.Name("mobile")).Clear();
-            driver.FindElement(By.Name("mobile")).SendKeys(contact.Mobile);
-            driver.FindElement(By.Name("work")).Clear();
-            driver.FindElement(By.Name("work")).SendKeys(contact.Work);
-            driver.FindElement(By.Name("fax")).Clear();
-            driver.FindElement(By.Name("fax")).SendKeys(contact.Fax);
-            driver.FindElement(By.Name("email")).Clear();
-            driver.FindElement(By.Name("email")).SendKeys(contact.Email);
-            driver.FindElement(By.Name("homepage")).Clear();
-            driver.FindElement(By.Name("homepage")).SendKeys(contact.Homepage);
-            driver.FindElement(By.Name("bday")).Click();
-            new SelectElement(driver.FindElement(By.Name("bday"))).SelectByText(contact.Bday);
-            driver.FindElement(By.Name("bmonth")).Click();
-            new SelectElement(driver.FindElement(By.Name("bmonth"))).SelectByText(contact.Bmonth);
-            driver.FindElement(By.Name("byear")).Click();
-            driver.FindElement(By.Name("byear")).Clear();
-            driver.FindElement(By.Name("byear")).SendKeys(contact.Byear);
+            Type(By.Name("firstname"), contact.Firstname);
+            Type(By.Name("middlename"), contact.Middlename);
+            Type(By.Name("lastname"), contact.Lastname);
+            Type(By.Name("nickname"), contact.Nickname);
+            Type(By.Name("title"), contact.Title);
+            Type(By.Name("company"), contact.Company);
+            Type(By.Name("address"), contact.Address);
+            Type(By.Name("home"), contact.Home);
+            Type(By.Name("mobile"), contact.Mobile);
+            Type(By.Name("work"), contact.Work);
+            Type(By.Name("fax"), contact.Fax);
+            Type(By.Name("email"), contact.Email);
+            Type(By.Name("homepage"), contact.Homepage);
+            TypeSelected(By.Name("bday"), contact.Bday);
+            TypeSelected(By.Name("bmonth"), contact.Bmonth);
+            Type(By.Name("byear"), contact.Byear);
+            /*TypeSelected(By.Name("new_group"), contact.New_group);*/
             return this;
         }
 
@@ -93,10 +76,10 @@ namespace adressbook_web_test_Unit
             return this;
         }
 
-        public ContactHelper ContactSelected(int id)
+        public ContactHelper ContactSelected(int index)
         {
-            
-            driver.FindElement(By.Id(Convert.ToString(id))).Click();
+            driver.FindElement(By.XPath($"/ html / body / div[1] / div[4] / form[2] / table / tbody / tr[{index + 1}] / td[1] / input")).Click();
+            //driver.FindElement(By.Id(Convert.ToString(index))).Click(); сделано выделение элемента по порядку.
             return this;
         }
 
@@ -114,7 +97,8 @@ namespace adressbook_web_test_Unit
 
         public ContactHelper FillContactModificationForm(int index)
         {
-            driver.FindElement(By.XPath($"//a[@href=\"edit.php?id={index}\"]")).Click();
+            driver.FindElement(By.XPath($"/ html / body / div[1] / div[4] / form[2] / table / tbody / tr[{index + 1}] / td[8] / a")).Click();
+            //driver.FindElement(By.XPath($"//a[@href=\"edit.php?id={index}\"]")).Click(); сделан выбор элемента по порядку, исключая индефикатор.
             return this;
         }
       
