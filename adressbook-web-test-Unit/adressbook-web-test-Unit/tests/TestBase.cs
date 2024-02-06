@@ -8,11 +8,11 @@ namespace adressbook_web_test_Unit
 
         protected ApplicationManager app;
 
-        [SetUp]
-        public void SetupTest()
+        [OneTimeSetUp]
+        public void SetupApplicationManager()
         {
-            app = TestSuiteFixture.app;
-            
+            app = ApplicationManager.GetInstance();
+
         }
 
     }

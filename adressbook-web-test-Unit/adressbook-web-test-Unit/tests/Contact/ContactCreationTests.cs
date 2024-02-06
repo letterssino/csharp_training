@@ -1,10 +1,11 @@
-﻿using NUnit.Framework;
+﻿using adressbook_web_test_Unit;
+using NUnit.Framework;
 
 
 namespace adressbook_web_test_Unit
 {
     [TestFixture]
-    public class ContactCreationTests : TestBase
+    public class ContactCreationTests : AuthTestBase
     {
 
         [Test]

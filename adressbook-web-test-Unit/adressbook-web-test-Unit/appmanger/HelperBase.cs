@@ -64,7 +64,7 @@ namespace adressbook_web_test_Unit
         {
             if (text != null)
             {
-                driver.FindElement(locator).Clear();
+                
                 driver.FindElement(locator).SendKeys(text);
             }
         }

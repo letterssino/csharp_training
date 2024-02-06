@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using adressbook_web_test_Unit;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace adressbook_web_test_Unit
 {
-    public class ContactModificationTests : TestBase
+    public class ContactModificationTests : AuthTestBase
     {
         [Test]
         public void ContactModificationTest()
