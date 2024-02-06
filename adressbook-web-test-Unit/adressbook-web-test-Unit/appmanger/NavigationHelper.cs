@@ -19,16 +19,29 @@ namespace adressbook_web_test_Unit
 
         public void GoToGroupPage()
         {
+            if (driver.Url == baseURL + "/group.php"
+                && IsElementPresent(By.Name("new")))
+            {
+                return;
+            }
             driver.FindElement(By.LinkText("groups")).Click();
         }
 
         public void Openhomepage()
         {
+            if (driver.Url == baseURL)
+            {
+                return;
+            }
             driver.Navigate().GoToUrl(baseURL);
         }
 
         public void InitUserCreation()
         {
+            if (driver.Url == baseURL + "/edit.php")
+            {
+                return;
+            }
             driver.FindElement(By.LinkText("add new")).Click();
         }
 
