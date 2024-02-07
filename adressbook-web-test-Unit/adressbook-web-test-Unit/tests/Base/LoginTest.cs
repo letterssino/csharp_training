@@ -14,7 +14,7 @@ namespace adressbook_web_test_Unit
         public void LoginWithValidCredentials()
         {
             // prepare
-            app.NavigationHelper.Openhomepage();
+            //app.NavigationHelper.Openhomepage();
             app.Auth.Logout();
 
             //action
@@ -29,7 +29,7 @@ namespace adressbook_web_test_Unit
         public void LoginWithInValidCredentials()
         {
             // prepare
-            app.NavigationHelper.Openhomepage();
+            //app.NavigationHelper.Openhomepage();
             app.Auth.Logout();
 
             //action

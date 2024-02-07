@@ -1,8 +1,10 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 
@@ -27,10 +29,14 @@ namespace adressbook_web_test_Unit
 
                 Logout();
             }
+            else if (driver.FindElements(By.XPath("//input[@value='Login']")) != null)
+            {
+                manager.NavigationHelper.Openhomepage();
+            }
+            
             Type(By.Name("user"), account.Username);
             Type(By.Name("pass"), account.Passwod);
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
-            //driver.FindElement(By.Id("header")).Click();
         }
 
         public void Logout()
@@ -53,5 +59,7 @@ namespace adressbook_web_test_Unit
                 && driver.FindElement(By.Name("logout")).FindElement(By.TagName("b")).Text 
                     == "(" + account.Username + ")";
         }
+
+        
     }
 }

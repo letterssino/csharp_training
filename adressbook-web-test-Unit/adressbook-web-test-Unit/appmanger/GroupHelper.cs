@@ -97,5 +97,18 @@ namespace adressbook_web_test_Unit
             driver.FindElement(By.Name("edit")).Click();
             return this;
         }
+
+        public List<GroupData> GetGroupList()
+        {
+            List<GroupData> groups = new List<GroupData>();
+
+            manager.NavigationHelper.GoToGroupPage();
+            ICollection<IWebElement>elements = driver.FindElements(By.CssSelector("span.group"));
+            foreach(IWebElement element in elements)
+            {
+                groups.Add(new GroupData(element.Text));
+            }
+            return groups;
+        }
     }
 }

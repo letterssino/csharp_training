@@ -1,5 +1,6 @@
 ﻿using adressbook_web_test_Unit;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace adressbook_web_test_Unit
 {
@@ -15,7 +16,12 @@ namespace adressbook_web_test_Unit
             group.Header = "ddd";
             group.Footer = "sss";
 
+            List<GroupData> oldGroups = app.GroupHelper.GetGroupList();
+
             app.GroupHelper.CreateGroup(group);
+
+            List<GroupData> newGroups = app.GroupHelper.GetGroupList();
+            Assert.AreEqual(oldGroups.Count + 1, newGroups.Count);
         }
 
         [Test]
@@ -25,7 +31,12 @@ namespace adressbook_web_test_Unit
             group.Header = "";
             group.Footer = "";
 
+            List<GroupData> oldGroups = app.GroupHelper.GetGroupList();
+
             app.GroupHelper.CreateGroup(group);
+
+            List<GroupData> newGroups = app.GroupHelper.GetGroupList();
+            Assert.AreEqual(oldGroups.Count + 1, newGroups.Count);
         }
     }
 }
