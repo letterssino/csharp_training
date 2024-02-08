@@ -24,16 +24,16 @@ namespace adressbook_web_test_Unit
             manager.NavigationHelper.InitUserCreation();
             FillUserForm(contact);
             SubmitUserCreation();
-            
+
             return this;
         }
 
-        public ContactHelper ContactDeleted(int index) 
+        public ContactHelper ContactDeleted(int index)
         {
             manager.NavigationHelper.Openhomepage();
             ContactSelected(index);
             SubmitContactDeleted();
-            
+
             return this;
         }
 
@@ -101,9 +101,31 @@ namespace adressbook_web_test_Unit
             //driver.FindElement(By.XPath($"//a[@href=\"edit.php?id={index}\"]")).Click(); сделан выбор элемента по порядку, исключая индефикатор.
             return this;
         }
-      
+
+        public List<ContactData> GetContactList()
+        {
+            List<ContactData> contacts = new List<ContactData>();
+
+            manager.NavigationHelper.Openhomepage();
+            ICollection<IWebElement> elements = driver.FindElements(By.XPath("/ html / body / div[1] / div[4] / form[2] / table / tbody/ tr"));
+            foreach (IWebElement element in elements)
+            {
+                contacts.Add(new ContactData(element.Text));
+            }
+            return contacts;
+        }
+
+        public void CheckNullContactList()
+        {
+            List<ContactData> oldContacts = GetContactList();
+            if (oldContacts.Count <= 1)
+            {
+                ContactData contact = new ContactData("TestNull");
+                contact.Middlename = "TestNull";
+                contact.Lastname = "TestNull"; 
+                contact.Bmonth = "November";
+                ContactCreat(contact);
+            }
+        }
     }
 }
-
-
-    

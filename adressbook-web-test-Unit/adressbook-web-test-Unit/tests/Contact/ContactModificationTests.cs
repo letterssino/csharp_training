@@ -13,6 +13,7 @@ namespace adressbook_web_test_Unit
         [Test]
         public void ContactModificationTest()
         {
+            app.ContactHelper.CheckNullContactList();
             ContactData newContactData = new ContactData("Test");
             newContactData.Middlename = "Test";
             newContactData.Lastname = "Test";

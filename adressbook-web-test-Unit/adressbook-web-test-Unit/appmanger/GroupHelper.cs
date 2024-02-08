@@ -110,5 +110,17 @@ namespace adressbook_web_test_Unit
             }
             return groups;
         }
+        
+        public void CheckNullGroupList()
+        {
+            List<GroupData> oldGroups = GetGroupList();
+            if (oldGroups.Count == 0)
+            {
+                GroupData group = new GroupData("aaa");
+                group.Header = "ddd";
+                group.Footer = "sss";
+                CreateGroup(group);
+            }
+        }
     }
 }

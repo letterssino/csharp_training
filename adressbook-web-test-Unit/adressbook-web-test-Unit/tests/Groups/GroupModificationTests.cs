@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +16,7 @@ namespace adressbook_web_test_Unit
 
         public void GroupModificationTest()
         {
+            app.GroupHelper.CheckNullGroupList();
             GroupData newData = new GroupData("zzz");
             newData.Header = null;
             newData.Footer = null;
