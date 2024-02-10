@@ -14,10 +14,12 @@ namespace adressbook_web_test_Unit
             
             List<GroupData> oldGroups = app.GroupHelper.GetGroupList();
 
-            app.GroupHelper.RemovalGroup(1);
+            app.GroupHelper.RemovalGroup(0);
 
             List<GroupData> newGroups = app.GroupHelper.GetGroupList();
-            Assert.AreEqual(oldGroups.Count - 1, newGroups.Count);
+
+            oldGroups.RemoveAt(0);
+            Assert.AreEqual(oldGroups, newGroups);
         }
     }
 }

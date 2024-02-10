@@ -78,7 +78,7 @@ namespace adressbook_web_test_Unit
 
         public ContactHelper ContactSelected(int index)
         {
-            driver.FindElement(By.XPath($"/ html / body / div[1] / div[4] / form[2] / table / tbody / tr[{index + 1}] / td[1] / input")).Click();
+            driver.FindElement(By.XPath($"/ html / body / div[1] / div[4] / form[2] / table / tbody / tr[{index + 2}] / td[1] / input")).Click();
             //driver.FindElement(By.Id(Convert.ToString(index))).Click(); сделано выделение элемента по порядку.
             return this;
         }
@@ -97,7 +97,7 @@ namespace adressbook_web_test_Unit
 
         public ContactHelper FillContactModificationForm(int index)
         {
-            driver.FindElement(By.XPath($"/ html / body / div[1] / div[4] / form[2] / table / tbody / tr[{index + 1}] / td[8] / a")).Click();
+            driver.FindElement(By.XPath($"/ html / body / div[1] / div[4] / form[2] / table / tbody / tr[{index + 2}] / td[8] / a")).Click();
             //driver.FindElement(By.XPath($"//a[@href=\"edit.php?id={index}\"]")).Click(); сделан выбор элемента по порядку, исключая индефикатор.
             return this;
         }
@@ -105,15 +105,18 @@ namespace adressbook_web_test_Unit
         public List<ContactData> GetContactList()
         {
             List<ContactData> contacts = new List<ContactData>();
-
             manager.NavigationHelper.Openhomepage();
-            ICollection<IWebElement> elements = driver.FindElements(By.XPath("/ html / body / div[1] / div[4] / form[2] / table / tbody/ tr"));
+
+            ICollection<IWebElement> elements = driver.FindElements(By.XPath("//*[@id=\"maintable\"]/tbody/tr/td[3]"));
+            ICollection<IWebElement> elements2 = driver.FindElements(By.XPath("//*[@id=\"maintable\"]/tbody/tr/td[4]"));
+
             foreach (IWebElement element in elements)
             {
-                contacts.Add(new ContactData(element.Text));
+              contacts.Add(new ContactData(element.Text));
             }
             return contacts;
         }
+
 
         public void CheckNullContactList()
         {

@@ -20,7 +20,17 @@ namespace adressbook_web_test_Unit
             GroupData newData = new GroupData("zzz");
             newData.Header = null;
             newData.Footer = null;
-            app.GroupHelper.Modify(1, newData);
+            
+            List<GroupData> oldGroups = app.GroupHelper.GetGroupList();
+
+            app.GroupHelper.Modify(0, newData);
+
+
+            List<GroupData> newGroups = app.GroupHelper.GetGroupList();
+            oldGroups[0].Name = newData.Name;
+            oldGroups.Sort();
+            newGroups.Sort();
+            Assert.AreEqual(oldGroups, newGroups);
         }
     }
 }

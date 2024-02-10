@@ -20,7 +20,17 @@ namespace adressbook_web_test_Unit
             newContactData.Bday = "20";
             newContactData.Byear = "1995";
             newContactData.Bmonth = "December";
-            app.ContactHelper.ContactModification(1, newContactData);
+
+            List<ContactData> oldContacts = app.ContactHelper.GetContactList();
+
+            app.ContactHelper.ContactModification(0, newContactData);
+
+            List<ContactData> newContacts = app.ContactHelper.GetContactList();
+
+            oldContacts[0].Firstname = oldContacts[0].Firstname + newContactData.Firstname;
+            oldContacts.Sort();
+            newContacts.Sort();
+            Assert.AreEqual(oldContacts, newContacts);
         }
     }
 }
