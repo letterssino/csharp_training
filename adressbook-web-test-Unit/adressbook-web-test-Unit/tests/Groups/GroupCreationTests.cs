@@ -45,5 +45,23 @@ namespace adressbook_web_test_Unit
             newGroups.Sort();
             Assert.AreEqual(oldGroups, newGroups);
         }
+
+        [Test]
+        public void BadNameCreationTest()
+        {
+            GroupData group = new GroupData("a'a");
+            group.Header = "";
+            group.Footer = "";
+
+            List<GroupData> oldGroups = app.GroupHelper.GetGroupList();
+
+            app.GroupHelper.CreateGroup(group);
+
+            List<GroupData> newGroups = app.GroupHelper.GetGroupList();
+            oldGroups.Add(group);
+            oldGroups.Sort();
+            newGroups.Sort();
+            Assert.AreEqual(oldGroups, newGroups);
+        }
     }
 }

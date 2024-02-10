@@ -2,7 +2,7 @@
 
 namespace adressbook_web_test_Unit
 {
-    public class ContactData : IEquatable<ContactData>
+    public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
         private string firstname;
         private string middlename = "";
@@ -28,16 +28,27 @@ namespace adressbook_web_test_Unit
             {
                 return false;
             }
-            if (Object.ReferenceEquals(this, other))
-            {
-                return true;
-            }
-            return firstname != other.firstname && middlename != other.middlename;
+            
+            return Firstname == other.Firstname ;
         }
 
         public override int GetHashCode()
         {
-            return firstname.GetHashCode();
+            return Firstname.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return "Firstname = " + Firstname;
+        }
+        public int CompareTo(ContactData other)
+        {
+            if (Object.ReferenceEquals(other, null))
+            {
+                return 1;
+            }
+
+            return Firstname.CompareTo(other.Firstname);
         }
 
         public ContactData(string firstname)
