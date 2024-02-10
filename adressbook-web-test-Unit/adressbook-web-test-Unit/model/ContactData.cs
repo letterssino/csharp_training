@@ -1,6 +1,8 @@
-﻿namespace adressbook_web_test_Unit
+﻿using System;
+
+namespace adressbook_web_test_Unit
 {
-    public class ContactData
+    public class ContactData : IEquatable<ContactData>
     {
         private string firstname;
         private string middlename = "";
@@ -19,6 +21,24 @@
         private string bmonth = "";
         private string byear = "";
         private string new_group = "";
+
+        public bool Equals(ContactData other)
+        {
+            if (Object.ReferenceEquals(other, null))
+            {
+                return false;
+            }
+            if (Object.ReferenceEquals(this, other))
+            {
+                return true;
+            }
+            return firstname != other.firstname && middlename != other.middlename;
+        }
+
+        public override int GetHashCode()
+        {
+            return firstname.GetHashCode();
+        }
 
         public ContactData(string firstname)
         {

@@ -22,7 +22,10 @@ namespace adressbook_web_test_Unit
             app.GroupHelper.CreateGroup(group);
 
             List<GroupData> newGroups = app.GroupHelper.GetGroupList();
-            Assert.AreEqual(oldGroups.Count + 1, newGroups.Count);
+            oldGroups.Add(group);
+            oldGroups.Sort();
+            newGroups.Sort();
+            Assert.AreEqual(oldGroups, newGroups);
         }
 
         [Test]
@@ -37,7 +40,10 @@ namespace adressbook_web_test_Unit
             app.GroupHelper.CreateGroup(group);
 
             List<GroupData> newGroups = app.GroupHelper.GetGroupList();
-            Assert.AreEqual(oldGroups.Count + 1, newGroups.Count);
+            oldGroups.Add(group);
+            oldGroups.Sort();
+            newGroups.Sort();
+            Assert.AreEqual(oldGroups, newGroups);
         }
     }
 }

@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,10 +19,12 @@ namespace adressbook_web_test_Unit
             List<ContactData> oldContacts = app.ContactHelper.GetContactList();
             System.Console.WriteLine(oldContacts.Count);
 
-            app.ContactHelper.ContactDeleted(1);
+            app.ContactHelper.ContactDeleted(0);
 
             List<ContactData> newContacts = app.ContactHelper.GetContactList();
-            Assert.AreEqual(oldContacts.Count -1 , newContacts.Count);
+            oldContacts.RemoveAt(0);
+
+            Assert.AreEqual(oldContacts, newContacts);
         }
 
     }

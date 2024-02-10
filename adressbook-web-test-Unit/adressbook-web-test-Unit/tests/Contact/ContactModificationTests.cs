@@ -20,7 +20,7 @@ namespace adressbook_web_test_Unit
             newContactData.Bday = "20";
             newContactData.Byear = "1995";
             newContactData.Bmonth = "December";
-            app.ContactHelper.ContactModification(1, newContactData);
+            app.ContactHelper.ContactModification(0, newContactData);
         }
     }
 }
