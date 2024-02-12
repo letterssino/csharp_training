@@ -97,6 +97,7 @@ namespace adressbook_web_test_Unit
 
         public ContactHelper FillContactModificationForm(int index)
         {
+            
             driver.FindElement(By.XPath($"/ html / body / div[1] / div[4] / form[2] / table / tbody / tr[{index + 2}] / td[8] / a")).Click();
             //driver.FindElement(By.XPath($"//a[@href=\"edit.php?id={index}\"]")).Click(); сделан выбор элемента по порядку, исключая индефикатор.
             return this;
@@ -129,6 +130,38 @@ namespace adressbook_web_test_Unit
                 contact.Bmonth = "November";
                 ContactCreat(contact);
             }
+        }
+
+        public int GetContactCount()
+        {
+            manager.NavigationHelper.Openhomepage();
+            return driver.FindElements(By.XPath("//*[@id=\"maintable\"]/tbody/tr/td[3]")).Count;
+        }
+
+        internal ContactData GetContactInforamtionFromTable(int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal ContactData GetContactInforamtionFromEditPurm(int index)
+        {
+            manager.NavigationHelper.Openhomepage();
+            string firstname = driver.FindElement(By.Name("firstname")).GetAttribute("value");
+            string lastname = driver.FindElement(By.Name("lastname")).GetAttribute("value");
+            string adress = driver.FindElement(By.Name("adress")).GetAttribute("value");
+
+            string homephone = driver.FindElement(By.Name("home")).GetAttribute("value");
+            string mobilephone = driver.FindElement(By.Name("mobile")).GetAttribute("value");
+            string workphone = driver.FindElement(By.Name("work")).GetAttribute("value");
+            FillContactModificationForm(index);
+        }
+
+        public void InitContactModifition(int index)
+        {
+            driver.Find
+                Elements(By.Name("entry"))[index]
+                .FindElements(By.TagName("td"))[7]
+                .FindElement(By.TagName("a")).Click;
         }
     }
 }

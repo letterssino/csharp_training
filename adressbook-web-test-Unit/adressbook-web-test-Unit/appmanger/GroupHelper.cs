@@ -52,6 +52,7 @@ namespace adressbook_web_test_Unit
         public GroupHelper SubmitGroupCreation()
         {
             driver.FindElement(By.Name("submit")).Click();
+            groupCashe = null;
             return this;
         }
 
@@ -72,6 +73,7 @@ namespace adressbook_web_test_Unit
         public GroupHelper RemoveGroup()
         {
             driver.FindElement(By.Name("delete")).Click();
+            groupCashe = null;
             return this;
         }
 
@@ -82,13 +84,23 @@ namespace adressbook_web_test_Unit
         }
         public  GroupHelper ReturnToGroupsPage()
         {
-            driver.FindElement(By.LinkText("group page")).Click();
-            return this;
+            if (driver.FindElements(By.LinkText("group page")) == null)
+            {
+                driver.FindElement(By.LinkText("group page")).Click();
+                return this;
+            }
+            else
+            {
+                manager.NavigationHelper.GoToGroupPage();
+                return this;
+            }
+            
         }
 
         public GroupHelper SubmitGroupModification()
         {
             driver.FindElement(By.Name("update")).Click();
+            groupCashe = null;
             return this;
         }
 
@@ -98,17 +110,25 @@ namespace adressbook_web_test_Unit
             return this;
         }
 
+        private List<GroupData> groupCashe = null;
         public List<GroupData> GetGroupList()
         {
-            List<GroupData> groups = new List<GroupData>();
-
-            manager.NavigationHelper.GoToGroupPage();
-            ICollection<IWebElement>elements = driver.FindElements(By.CssSelector("span.group"));
-            foreach(IWebElement element in elements)
+            if (groupCashe == null)
             {
-                groups.Add(new GroupData(element.Text));
+                groupCashe = new List<GroupData>();
+                manager.NavigationHelper.GoToGroupPage();
+                ICollection<IWebElement> elements = driver.FindElements(By.CssSelector("span.group"));
+                foreach (IWebElement element in elements)
+                {
+                    
+                    groupCashe.Add(new GroupData(element.Text)
+                    {
+                        ID = element.FindElement(By.TagName("input")).GetAttribute("value")
+                    });
+                }
             }
-            return groups;
+            
+            return new List<GroupData>(groupCashe);
         }
         
         public void CheckNullGroupList()
@@ -121,6 +141,11 @@ namespace adressbook_web_test_Unit
                 group.Footer = "sss";
                 CreateGroup(group);
             }
+        }
+
+        public int GetGroupCount()
+        {
+            return driver.FindElements(By.CssSelector("span.group")).Count;
         }
     }
 }
