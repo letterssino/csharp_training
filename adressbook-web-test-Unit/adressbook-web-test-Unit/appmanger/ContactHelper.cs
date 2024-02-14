@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework.Interfaces;
 using System.Reflection.Emit;
+using System.Reflection;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace adressbook_web_test_Unit
 {
@@ -105,16 +107,21 @@ namespace adressbook_web_test_Unit
 
         public List<ContactData> GetContactList()
         {
+            
             List<ContactData> contacts = new List<ContactData>();
             manager.NavigationHelper.Openhomepage();
-
-            ICollection<IWebElement> elements = driver.FindElements(By.XPath("//*[@id=\"maintable\"]/tbody/tr/td[3]"));
-            ICollection<IWebElement> elements2 = driver.FindElements(By.XPath("//*[@id=\"maintable\"]/tbody/tr/td[4]"));
-
-            foreach (IWebElement element in elements)
+            ICollection<IWebElement> elements = driver.FindElements(By.Name("entry"));
+            foreach(IWebElement element in elements)
             {
-              contacts.Add(new ContactData(element.Text));
+                IList<IWebElement> cells = element.FindElements(By.TagName("td"));
+                string lastName = cells[1].Text;
+                string firstName = cells[2].Text;
+                contacts.Add(new ContactData(firstName){
+                    //Firstname = firstName,
+                    Lastname = lastName
+                });;
             }
+            
             return contacts;
         }
 
@@ -154,14 +161,14 @@ namespace adressbook_web_test_Unit
             string mobilephone = driver.FindElement(By.Name("mobile")).GetAttribute("value");
             string workphone = driver.FindElement(By.Name("work")).GetAttribute("value");
             FillContactModificationForm(index);
+            throw new NotFiniteNumberException() ;
         }
-
+        
         public void InitContactModifition(int index)
         {
-            driver.Find
-                Elements(By.Name("entry"))[index]
-                .FindElements(By.TagName("td"))[7]
-                .FindElement(By.TagName("a")).Click;
+            
+            //IReadOnlyList<IWebElement> plants = driver.FindElements(By.ClassName("entry"));
+            driver.FindElements(By.ClassName("entry"))[index].FindElements(By.TagName("td"))[7].FindElement(By.TagName("a")).Click();
         }
     }
 }

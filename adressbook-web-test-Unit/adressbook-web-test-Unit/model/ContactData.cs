@@ -13,7 +13,7 @@ namespace adressbook_web_test_Unit
                 return false;
             }
             
-            return Firstname == other.Firstname ;
+            return Firstname == other.Firstname;
         }
 
         public override int GetHashCode()
@@ -23,7 +23,7 @@ namespace adressbook_web_test_Unit
 
         public override string ToString()
         {
-            return "Firstname = " + Firstname;
+            return Firstname + Lastname;
         }
         public int CompareTo(ContactData other)
         {
