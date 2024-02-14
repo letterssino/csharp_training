@@ -25,6 +25,8 @@ namespace adressbook_web_test_Unit
 
             app.ContactHelper.ContactModification(0, newContactData);
 
+            Assert.AreEqual(oldContacts.Count, app.ContactHelper.GetContactCount());
+
             List<ContactData> newContacts = app.ContactHelper.GetContactList();
 
             oldContacts[0].Firstname = oldContacts[0].Firstname + newContactData.Firstname;

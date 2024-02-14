@@ -16,10 +16,19 @@ namespace adressbook_web_test_Unit
 
             app.GroupHelper.RemovalGroup(0);
 
+            Assert.AreEqual(oldGroups.Count - 1, app.GroupHelper.GetGroupCount());
+
             List<GroupData> newGroups = app.GroupHelper.GetGroupList();
+
+            GroupData toBeRemoved = oldGroups[0];
 
             oldGroups.RemoveAt(0);
             Assert.AreEqual(oldGroups, newGroups);
+
+            foreach (GroupData group in oldGroups)
+            {
+                Assert.AreNotEqual(group.ID, toBeRemoved.ID);
+            }
         }
     }
 }

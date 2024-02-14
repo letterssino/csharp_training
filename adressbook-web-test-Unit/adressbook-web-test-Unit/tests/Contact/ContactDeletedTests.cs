@@ -21,6 +21,8 @@ namespace adressbook_web_test_Unit
 
             app.ContactHelper.ContactDeleted(0);
 
+            Assert.AreEqual(oldContacts.Count - 1, app.ContactHelper.GetContactCount());
+
             List<ContactData> newContacts = app.ContactHelper.GetContactList();
             oldContacts.RemoveAt(0);
             oldContacts.Sort();

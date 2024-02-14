@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="tests\Base\AuthTestBase.cs" />
+    <Compile Include="tests\ContactInformationTests.cs" />
     <Compile Include="tests\Contact\ContactModificationTests.cs" />
     <Compile Include="tests\Contact\ContactDeletedTests.cs" />
     <Compile Include="tests\Groups\GroupModificationTests.cs" />
